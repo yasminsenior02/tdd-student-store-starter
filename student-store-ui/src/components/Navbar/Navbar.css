@@ -1,0 +1,12 @@
+.navbar {
+  background-color: darkmagenta;
+
+  list-style-type: none;
+  float: left;
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+
+  margin: 0;
+  padding: 10px;
+}
