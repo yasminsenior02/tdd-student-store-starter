@@ -1,12 +1,15 @@
 .navbar {
-  background-color: darkmagenta;
+  background-color: lightcyan;
 
   list-style-type: none;
   float: left;
   display: flex;
   text-align: center;
   justify-content: space-around;
-
+  color: skyblue;
+  font-size: large;
+  height: 60px;
+  /* width: 5000px; */
   margin: 0;
   padding: 10px;
 }
