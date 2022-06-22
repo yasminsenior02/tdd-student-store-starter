@@ -7,7 +7,9 @@ export default function Navbar() {
     <nav className="navbar">
       {/* <p>Navbar</p> */}
       <li>
-        <Link to="/">CodePath</Link>
+        <Link to="/">
+          <img src="https://codepath-student-store-demo.surge.sh/assets/codepath.f1b3e41a.svg" />
+        </Link>
       </li>
       <li>
         <Link to="/">Home</Link>
