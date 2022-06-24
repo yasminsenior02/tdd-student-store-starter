@@ -7,4 +7,5 @@
   top: 3.4em;
   overflow-x: hidden;
   padding-top: 10px;
+  transition: 0.5s;
 }

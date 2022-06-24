@@ -12,16 +12,29 @@ export default function ProductCard({
   handleRemoveItemToCart,
   showDescription,
 }) {
+  const description = showDescription ? (
+    <div className="product-description">{product.description}</div>
+  ) : (
+    ""
+  );
 
-    const description = showDescription ? <div className="product-description">{product.description}</div> : ""
-   
   return (
-    <li>
-    <Link to={"/products" + productId}><img src={product.image}></img></Link>
-    <button className="add" onClick={handleAddItemToCart(productId)}>{"+"}</button>
-    <button className="remove" onClick={handleRemoveItemToCart(productId)}>{"-"}</button>
-    <div className="product-card"></div>;
-    <div className="product-name">{product.name}</div>;
-    <div className="product-price"> ${product.price}</div>;
+    <div className="product-card">
+      ;
+      <li>
+        <Link to={"/products" + productId}>
+          <img src={product.image} className="image" />
+        </Link>
+      </li>
+      <button className="add" onClick={handleAddItemToCart(productId)}>
+        {"+"}
+      </button>
+      <button className="remove" onClick={handleRemoveItemToCart(productId)}>
+        {"-"}
+      </button>
+      <div className="product-quantity">{quantity}</div>
+      <div className="product-name">{product.name}</div>;
+      <div className="product-price"> ${product.price}</div>;
+    </div>
   );
 }
