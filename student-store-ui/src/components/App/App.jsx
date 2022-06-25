@@ -10,6 +10,7 @@ import ProductDetail from "../ProductDetail/ProductDetail";
 import NotFound from "../NotFound/NotFound";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // import ProductCard from "../ProductCard/ProductCard";
 
@@ -19,46 +20,43 @@ export default function App() {
   const [error, setError] = useState();
   const [isOpen, setisOpen] = useState();
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [checkoutForm, setcheckoutForm] = useState();
+  const [checkoutForm, setcheckoutForm] = useState(null);
 
-  const url = "https://codepath-store-api.herokuapp.com/store";
+  const url = `https://codepath-store-api.herokuapp.com/store`;
 
-  useEffect(() => {
-    async function getProds() {
-      try {
-        const response = await axios.get(url);
-        console.log("response", response);
-
-        setProducts(response.data.products);
-        console.log(products);
-      } catch (error) {
-        console.error(error);
-      }
-    }
-
-    getProds();
+  useEffect(async () => {
+    await axios
+      .get(url)
+      .then((response) => {
+        console.log("Response " + response);
+        let responseded = response.data;
+        setProducts(responseded.products);
+        console.log("Response.data " + response.data);
+        console.log(responseded);
+        // console.log(products);
+      })
+      .catch((error) => {
+        setError(error);
+      });
   }, []);
-  // function handleAddItemToCart(productId) {}
-  // const productt = shoppingCart.products.find(
-  //   (prod) => prod.id === productId
-  // );
-  // if (productt) {
-  //   setShoppingCart(
-  //     shoppingCart.map((productt) =>
-  //       productt.id === productId
-  //         ? { ...productt, quantity: productt.quantity }
-  //         : prod
-  //     )
-  //   );
-  // } else {
-  //   setShoppingCart([...shoppingCart, { ...productId, quantity: 1 }]);
-  // }
 
-  //     };
-  //   if (productId(!shoppingCart)) quantity = 1;
-  //   else quantity += 1;
+  // \
+  const handleOnToggle = () => {
+    setisOpen(!isOpen);
+  };
 
-  // function handleRemoveItemFromCart(productId) {}
+  function handleAddItemToCart(productId) {}
+  const productt = shoppingCart.products.find(
+    (productt) => productt.id === productId
+  );
+  shoppingCart.map((productt) => {
+    if (productt(!shoppingCart)) quantity = 1;
+    else quantity + 1;
+    {
+      setShoppingCart.concat(productt);
+    }
+  });
+
   function handleOnCheckoutFormChange(names, values) {
     let profileinfo = {
       name: names,
@@ -78,14 +76,13 @@ export default function App() {
     <div className="app">
       <BrowserRouter>
         <main>
-          {/* YOUR CODE HERE! */}
-
           <Routes>
             <Route
               path="/"
               element={
                 <Home
                   products={products}
+
                   // shoppingCart={shoppingCart}
                   // handleAddItemToCart={handleAddItemToCart}
                   // handleRemoveItemFromCart={handleRemoveItemFromCart}
@@ -103,10 +100,12 @@ export default function App() {
               }
             />
             <Route path="*" element={<NotFound />} />
+            <Route path="navbar" element={<Navbar />} />
+            <Route path="sidebar" element={<Sidebar />} />
           </Routes>
         </main>
       </BrowserRouter>
-      <Home />
+      {/* <Home /> */}
     </div>
   );
 }
