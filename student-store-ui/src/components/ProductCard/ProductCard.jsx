@@ -12,20 +12,17 @@ export default function ProductCard({
   handleRemoveItemToCart,
   showDescription,
 }) {
-  const description = showDescription ? (
-    <div className="product-description">{product.description}</div>
-  ) : (
-    ""
-  );
+  //   const description = showDescription ?
+  //     <div className="product-description">{product.description}</div>
+  //   ) : (
+  //     ""
+  //   );
 
   return (
     <div className="product-card">
-      ;
-      <li>
-        <Link to={"/products" + productId}>
-          <img src={product.image} className="image" />
-        </Link>
-      </li>
+      <Link to={"/products/" + productId}>
+        <img src={product.image} className="Productimage" />
+      </Link>
       <button className="add" onClick={handleAddItemToCart(productId)}>
         {"+"}
       </button>

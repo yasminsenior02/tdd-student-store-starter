@@ -7,17 +7,17 @@ import "/.ProductView.css";
 export default function ProductView({
   product,
   proudctId,
-  quantity,
-  handleAddItemToCart,
-  handleRemoveItemToCart,
+  //   handleAddItemToCart,
+  //   handleRemoveItemToCart,
 }) {
   return (
     <div className="productview">
-      <ProductCard
-        productId={proudctId}
-        showDescription={(showDescription = true)}
-      />
       <h1 className="product-card">Product#{proudctId}</h1>
+      <ProductCard
+        product={product}
+        productId={proudctId}
+        showDescription={true}
+      />
     </div>
   );
 }
