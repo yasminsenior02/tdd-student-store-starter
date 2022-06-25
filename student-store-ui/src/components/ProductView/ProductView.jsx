@@ -16,7 +16,7 @@ export default function ProductView({
       <ProductCard
         product={product}
         productId={proudctId}
-        showDescription={true}
+        // showDescription={true}
       />
     </div>
   );

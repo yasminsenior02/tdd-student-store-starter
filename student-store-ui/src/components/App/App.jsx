@@ -38,7 +38,7 @@ export default function App() {
 
     getProds();
   }, []);
-  function handleAddItemToCart(productId) {}
+  // function handleAddItemToCart(productId) {}
   // const productt = shoppingCart.products.find(
   //   (prod) => prod.id === productId
   // );
@@ -58,7 +58,7 @@ export default function App() {
   //   if (productId(!shoppingCart)) quantity = 1;
   //   else quantity += 1;
 
-  function handleRemoveItemFromCart(productId) {}
+  // function handleRemoveItemFromCart(productId) {}
   function handleOnCheckoutFormChange(names, values) {
     let profileinfo = {
       name: names,
@@ -66,9 +66,9 @@ export default function App() {
     };
     setcheckoutForm(profileinfo);
   }
-  function handleOnSubmitCheckoutForm() {}
+  // function handleOnSubmitCheckoutForm() {}
 
-  // var shoppingCart={
+  // // var shoppingCart={
   //   id: itemId
   //   quantity: 0
 
@@ -86,9 +86,9 @@ export default function App() {
               element={
                 <Home
                   products={products}
-                  shoppingCart={shoppingCart}
-                  handleAddItemToCart={handleAddItemToCart}
-                  handleRemoveItemFromCart={handleRemoveItemFromCart}
+                  // shoppingCart={shoppingCart}
+                  // handleAddItemToCart={handleAddItemToCart}
+                  // handleRemoveItemFromCart={handleRemoveItemFromCart}
                 />
               }
             />
@@ -96,9 +96,9 @@ export default function App() {
               path="/products/:productId"
               element={
                 <ProductDetail
-                  shoppingCart={shoppingCart}
-                  handleAddItemToCart={handleAddItemToCart}
-                  handleRemoveItemFromCart={handleRemoveItemFromCart}
+                // shoppingCart={shoppingCart}
+                // handleAddItemToCart={handleAddItemToCart}
+                // handleRemoveItemFromCart={handleRemoveItemFromCart}
                 />
               }
             />
@@ -106,7 +106,7 @@ export default function App() {
           </Routes>
         </main>
       </BrowserRouter>
-      <Home products={products} />
+      <Home />
     </div>
   );
 }

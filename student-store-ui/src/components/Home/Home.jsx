@@ -8,9 +8,9 @@ import "./Home.css";
 
 export default function Home({
   products,
-  handleItemToCart,
-  handleRemoveItemToCart,
-  shoppingCart,
+  // handleItemToCart,
+  // handleRemoveItemToCart,
+  // shoppingCart,
 }) {
   return (
     <div className="home">
@@ -18,9 +18,9 @@ export default function Home({
       <Sidebar />
       <ProductGrid
         products={products}
-        handleItemToCart={handleItemToCart}
-        handleRemoveItemToCart={handleRemoveItemToCart}
-        shoppingCart={shoppingCart}
+        // handleItemToCart={handleItemToCart}
+        // handleRemoveItemToCart={handleRemoveItemToCart}
+        // shoppingCart={shoppingCart}
       />
       {/* <Footer /> */}
     </div>
