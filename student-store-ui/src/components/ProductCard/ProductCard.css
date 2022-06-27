@@ -1,0 +1,28 @@
+.Productimage {
+  box-shadow: 0.2px 4px 5px rgb(18, 191, 185);
+  display: flex;
+  flex-wrap: wrap;
+  /* width: 100%; */
+  width: 200px;
+  height: 200px;
+  border-radius: 5px;
+  border: 5px;
+  /* background-color: solid linear-gradient(to bottom right, #189daa, white); */
+  gap: 20px;
+}
+.boarder {
+  font-size: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom right, #189daa, white);
+  background-position: 1px;
+}
+.add {
+  position: relative;
+  left: 150px;
+  top: 2px;
+}
+.remove {
+  position: relative;
+  left: 150px;
+  top: 2px;
+}
