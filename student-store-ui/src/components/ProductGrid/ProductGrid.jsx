@@ -11,20 +11,21 @@ export default function ProductGrid({
 }) {
   return (
     <div className="product-grid">
-      {products.map((product, index) => {
-        return (
-          <ProductCard
-            key={products.id}
-            products={products}
-            // showDescription={false}
-            // handleAddItemToCart={handleAddItemToCart}
-            // handleRemoveItemToCart={handleRemoveItemToCart}
-            // shoppingCart={shoppingCart}
-          />
-        );
-      })}
-      ;
-      <Sidebar />
+      {products
+        ? products.map((product, index) => {
+            return (
+              <ProductCard
+                key={index}
+                productId={product.id}
+                product={product}
+                // showDescription={false}
+                // handleAddItemToCart={handleAddItemToCart}
+                // handleRemoveItemToCart={handleRemoveItemToCart}
+                // shoppingCart={shoppingCart}
+              />
+            );
+          })
+        : null}
     </div>
   );
 }

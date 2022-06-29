@@ -18,9 +18,10 @@ export default function App() {
   const [products, setProducts] = useState([]);
   const [isFeteching, setisFetching] = useState(false);
   const [error, setError] = useState();
-  const [isOpen, setisOpen] = useState();
+  const [isOpen, setisOpen] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setcheckoutForm] = useState(null);
+  const [quantity, setquantity] = useState(0);
 
   const url = `https://codepath-store-api.herokuapp.com/store`;
 
@@ -40,37 +41,53 @@ export default function App() {
       });
   }, []);
 
-  // \
-  const handleOnToggle = () => {
+  function handleOnToggle() {
     setisOpen(!isOpen);
-  };
+    console.log(handleOnToggle);
+  }
 
-  function handleAddItemToCart(productId) {}
-  const productt = shoppingCart.products.find(
-    (productt) => productt.id === productId
-  );
-  shoppingCart.map((productt) => {
-    if (productt(!shoppingCart)) quantity = 1;
-    else quantity + 1;
+  function handleAddItemToCart(productId) {
+    let productt = shoppingCart.find((prods) => prods.id === productId);
     {
-      setShoppingCart.concat(productt);
+      shoppingCart.map((productt) => {
+        if (productt(shoppingCart)) {
+          quantity = 1;
+          setShoppingCart(productt);
+        } else {
+          setquantity(quantity + 1);
+        }
+      });
     }
-  });
+  }
 
-  function handleOnCheckoutFormChange(names, values) {
+  function handleRemoveItemToCart(productId) {
+    let productt = shoppingCart.find((prods) => prods.id === productId);
+    {
+      shoppingCart.map((productt) => {
+        if (productt(shoppingCart)) {
+        } else {
+          setquantity(quantity - 1);
+        }
+      });
+    }
+  }
+
+  function handleOnCheckoutFormChange(names, email) {
     let profileinfo = {
       name: names,
-      value: values,
+      value: email,
     };
     setcheckoutForm(profileinfo);
   }
-  // function handleOnSubmitCheckoutForm() {}
-
-  // // var shoppingCart={
-  //   id: itemId
-  //   quantity: 0
-
-  // }
+  async function handleOnSubmitCheckoutForm(checkoutForm, shoppingCart) {
+    const response = axios.post(
+      "https://codepath-store-api.herokuapp.com/store",
+      {
+        profile: checkoutForm,
+        shoppingCart: shoppingCart,
+      }
+    );
+  }
 
   return (
     <div className="app">
@@ -82,10 +99,9 @@ export default function App() {
               element={
                 <Home
                   products={products}
-
-                  // shoppingCart={shoppingCart}
-                  // handleAddItemToCart={handleAddItemToCart}
-                  // handleRemoveItemFromCart={handleRemoveItemFromCart}
+                  shoppingCart={shoppingCart}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemToCart={handleRemoveItemToCart}
                 />
               }
             />
@@ -93,16 +109,25 @@ export default function App() {
               path="/products/:productId"
               element={
                 <ProductDetail
-                // shoppingCart={shoppingCart}
-                // handleAddItemToCart={handleAddItemToCart}
-                // handleRemoveItemFromCart={handleRemoveItemFromCart}
+                  shoppingCart={shoppingCart}
+                  handleAddItemToCart={handleAddItemToCart}
+                  handleRemoveItemToCart={handleRemoveItemToCart}
                 />
               }
             />
             <Route path="*" element={<NotFound />} />
-            <Route path="navbar" element={<Navbar />} />
-            <Route path="sidebar" element={<Sidebar />} />
           </Routes>
+
+          <Sidebar
+            isOpen={isOpen}
+            shoppingCart={shoppingCart}
+            quantity={quantity}
+            products={products}
+            checkoutForm={checkoutForm}
+            handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+            handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+            handleOnToggle={handleOnToggle}
+          />
         </main>
       </BrowserRouter>
       {/* <Home /> */}
