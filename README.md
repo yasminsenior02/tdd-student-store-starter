@@ -4,7 +4,9 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-![ezgif-3-2d27b44b53](https://user-images.githubusercontent.com/75453235/176328809-90a360e4-3fd0-4d16-9ae1-1a4fc233678f.gif)
+![ezgif com-gif-maker](https://user-images.githubusercontent.com/75453235/176343750-3998e660-c494-48c7-80fd-e9bbd7a0cc09.gif)
+
+
 
 ### Application Features
 
@@ -14,7 +16,7 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 - [x] On initial page load, display the products at the [GET /store endpoint](https://codepath-store-api.herokuapp.com/store).
 - [x] User can click on the categories (Clothing, food, etc) to filter the product grid by type.
 - [x] User can search for products.
-- [ ] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
+- [x] User can click on a product in the grid to view additional product details. Navigation is via a React Router.
 - [x] User can click to expand the shopping cart in the left navigation.
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
@@ -288,17 +290,15 @@ The following specifications were met on the Express backend and the React front
 
 - Did the topics discussed in your labs prepare you to complete the assignment? Be specific, which features in your weekly assignment did you feel unprepared to complete?
 
-Some yes. It was very hard tracing step thought, there was no complete layout.
+Some yes. It was very hard tracing the steps though, there was no complete layout to follow. Previous labs did help with the layout and descriptions, but for the sidebar and navbar? no. 
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-I would've got my product details to fully load.
+I would've got my sidebar to fully function. It only displays that they no items in the shopping cart. Also I would've got my quanity to show with the handle add and remove. I don't think i rendered my quanity properly so it didn't display.
 
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
-
-  The code on my product details wasnt able to fully present itself.
-
+The sidebar didn't go as planned, I wasn't fully able to finish my checkout form so my sidebar didn't go as displayed.
 ### Open-source libraries used
 
 - Add any links to open-source libraries used in your project.
