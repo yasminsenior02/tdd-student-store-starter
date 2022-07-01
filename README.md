@@ -1,10 +1,12 @@
-# Project #2: Student Store
+# Project #3: Student Store, Part II
+
 
 ## Overview
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
-![ezgif com-gif-maker](https://user-images.githubusercontent.com/75453235/176343750-3998e660-c494-48c7-80fd-e9bbd7a0cc09.gif)
+
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/75453235/176976302-4c328862-02e4-4209-958a-eb6f17f7fc10.gif)
 
 
 
@@ -20,8 +22,8 @@ Selling merchandise in the modern era requires digital solutions. For this proje
 - [x] User can click to expand the shopping cart in the left navigation.
 - [x] User can click the '+' button on a product cart to increment that product in the shopping cart.
 - [x] User can click the '-' button on a product cart to increment that product in the shopping cart.
-- [ ] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
-- [ ] User can check out, and can view receipt upon completion.
+- [x] Shopping cart displays a table of products, quantities, subtotal, tax, and total.
+- [x] User can check out, and can view receipt upon completion.
 
 #### Stretch Features
 
