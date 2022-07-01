@@ -2,7 +2,7 @@ import * as React from "react";
 import "./ShoppingCart.css";
 
 export default function ShoppingCart({ isOpen, shoppingCart, products }) {
-  const show =
+  const shoppingdisplay =
     shoppingCart.length === 0 ? (
       <div className="notification">
         {" "}
@@ -10,9 +10,9 @@ export default function ShoppingCart({ isOpen, shoppingCart, products }) {
       </div>
     ) : (
       shoppingCart.map((item) => {
-        let product = products.find((element) => {
-          console.log("element and item: ", element, item);
-          return element.id == item.id;
+        let product = products.find((el) => {
+          console.log("element and item: ", el, item);
+          return el.id == item.id;
         });
 
         return (
@@ -34,13 +34,13 @@ export default function ShoppingCart({ isOpen, shoppingCart, products }) {
       <div className="shop-lab">Shopping Cart</div>
 
       <ul className="labels">
-        <li className="name-lab"></li>
-        <li className="quan-lab"></li>
-        <li className="unitprice-lab"> </li>
-        <li className="price-lab"> </li>
+        <li className="name-lab">Product</li>
+        <li className="quan-lab">Amount</li>
+        <li className="unitprice-lab">Product Price</li>
+        <li className="price-lab">Price </li>
       </ul>
 
-      {show}
+      {shoppingdisplay}
     </div>
   );
 }
