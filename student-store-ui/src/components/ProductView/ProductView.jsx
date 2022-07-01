@@ -6,7 +6,7 @@ import "./ProductView.css";
 
 export default function ProductView({
   product,
-  proudctId,
+  productId,
   quantity,
   shoppingCart,
   handleAddItemToCart,
@@ -14,16 +14,17 @@ export default function ProductView({
 }) {
   return (
     <div className="productview">
-      <h1 className="product-card">Product#{proudctId}</h1>
+      <h1 className="product-card">Product!{productId}</h1>
       <ProductCard
         product={product}
         handleAddItemToCart={handleAddItemToCart}
         handleRemoveItemToCart={handleRemoveItemToCart}
-        productId={proudctId}
-        quantity={quantity}
+        productId={productId}
+        // quantity={quantity}
         showDescription={true}
         shoppingCart={shoppingCart}
       />
     </div>
   );
 }
+// quantity variable with find go into shopping cart and find the item

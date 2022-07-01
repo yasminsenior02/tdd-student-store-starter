@@ -1,18 +1,39 @@
 import * as React from "react";
 import "./ProductCard.css";
 import { Link } from "react-router-dom";
+import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import { useState } from "react";
 
 export default function ProductCard({
   product,
   productId,
-  quantity,
-  showDecription,
+  setShoppingCart,
+  shoppingCart,
+  //quantity,
+  showDescription,
+  handleAddItemToCart,
+  handleRemoveItemToCart,
 }) {
-  const descriptshowing = showDecription ? (
-    <div className="product-description">{product.showDecription}</div>
+  const [quantity, setquantity] = useState(0);
+
+  // function handleAddItemToCart() {
+  //   setquantity(quantity + 1);
+  // }
+
+  // function handleRemoveItemToCart() {
+  //   setquantity(quantity - 1);
+  //   if (quantity < 1) {
+  //     setquantity(0); //keeps above 0
+  //   }
+  //   setShoppingCart(shoppingCart.concat(item));
+  // }
+
+  const descriptshowing = showDescription ? (
+    <div className="product-description">{product.descriptshowing}</div>
   ) : (
     ""
   );
+
   return (
     <div className="product-card">
       <div className="toshow">
@@ -21,17 +42,29 @@ export default function ProductCard({
         </Link>
       </div>
       <div className="boarder">
-        <button className="add" onClick={() => handleAddItemToCart()}>
-          {"+"}
-        </button>
-        <button className="remove" onClick={() => handleRemoveItemToCart()}>
-          {"-"}
-        </button>
+        <p className="description">{product.descriptshowing}</p>
 
         <p className="product-name">{product.name}</p>
+
         <p className="product-price"> ${product.price}</p>
 
-        <p className="product-quantity">{quantity}</p>
+        <button className="add" onClick={() => handleAddItemToCart(productId)}>
+          {"+"}
+        </button>
+
+        {
+          <p className="product-quantity">
+            {shoppingCart.find((item) => item.itemId === productId)
+              ? shoppingCart.find((item) => item.itemId === productId).quantity
+              : null}
+          </p>
+        }
+        <button
+          className="remove"
+          onClick={() => handleRemoveItemToCart(productId)}
+        >
+          {"-"}
+        </button>
       </div>
     </div>
   );

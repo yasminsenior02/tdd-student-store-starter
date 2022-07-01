@@ -8,7 +8,14 @@ import { useState } from "react";
 // import Footer from "../Footer/Footer";
 import "./Home.css";
 
-export default function Home(props) {
+export default function Home({
+  products,
+  search,
+  handleRemoveItemToCart,
+  handleAddItemToCart,
+  shoppingCart,
+  subtotal,
+}) {
   const [searchText, setSearchText] = useState("");
   // const [Open, setOpen] = useState(true);
 
@@ -22,14 +29,18 @@ export default function Home(props) {
   const handleOnTextChange = (event) => {
     setSearchText(event.target.value);
   };
-  var searching = props.products.filter((prodt) => {
-    return prodt.name.toLowerCase().includes(searchText.toLowerCase());
+  //console.log(products);
+  var searching = products.filter((element) => {
+    //  console.log("products in filter: ", products);
+    return element.name.toLowerCase().includes(searchText.toLowerCase());
   });
+
+  //console.log(subtotal);
 
   return (
     <div className="home">
       <Navbar />
-      <Sidebar />
+      <Sidebar subtotal={subtotal} />
       <Hero />
       <nav className="sub-nav-bar">
         <div className="content">
@@ -47,8 +58,12 @@ export default function Home(props) {
         </div>
       </nav>
       <ProductGrid
-        search={props.search}
         products={searching}
+        handleAddItemToCart={handleAddItemToCart}
+        handleRemoveItemToCart={handleRemoveItemToCart}
+        shoppingCart={shoppingCart}
+        search={search}
+        // searchText={searching}
         // handleItemToCart={props.handleItemToCart}
         // handleRemoveItemToCart={props.handleRemoveItemToCart}
         // shoppingCart={props.shoppingCart}

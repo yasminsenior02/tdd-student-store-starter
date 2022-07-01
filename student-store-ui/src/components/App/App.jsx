@@ -6,6 +6,7 @@ import Sidebar from "../Sidebar/Sidebar";
 // import Footer from "../Footer/Footer";
 import Home from "../Home/Home";
 import ProductDetail from "../ProductDetail/ProductDetail";
+import ProductCard from "../ProductCard/ProductCard";
 // import ProductGrid from "../ProductGrid/ProductGrid";
 import NotFound from "../NotFound/NotFound";
 import "./App.css";
@@ -19,21 +20,24 @@ export default function App() {
   const [isFeteching, setisFetching] = useState(false);
   const [error, setError] = useState();
   const [isOpen, setisOpen] = useState(false);
+  const [subtotal, setSubtotal] = useState(0);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [checkoutForm, setcheckoutForm] = useState(null);
-  const [quantity, setquantity] = useState(0);
 
-  const url = `https://codepath-store-api.herokuapp.com/store`;
+  // const [quantity, setquantity] = useState(0);
+
+  const url = `http://localhost:3001/store`;
 
   useEffect(async () => {
     await axios
       .get(url)
       .then((response) => {
-        console.log("Response " + response);
+        //    console.log("Response ", response);
         let responseded = response.data;
-        setProducts(responseded.products);
-        console.log("Response.data " + response.data);
-        console.log(responseded);
+        setProducts(responseded);
+        //     console.log("Response.data " + response.data);
+        //     console.log(responseded);
+
         // console.log(products);
       })
       .catch((error) => {
@@ -46,31 +50,60 @@ export default function App() {
     console.log(handleOnToggle);
   }
 
-  function handleAddItemToCart(productId) {
-    let productt = shoppingCart.find((prods) => prods.id === productId);
-    {
-      shoppingCart.map((productt) => {
-        if (productt(shoppingCart)) {
-          quantity = 1;
-          setShoppingCart(productt);
-        } else {
-          setquantity(quantity + 1);
-        }
-      });
-    }
-  }
+  const handleAddItemToCart = (productId) => {
+    var newItem;
+    var newCart = [];
 
-  function handleRemoveItemToCart(productId) {
-    let productt = shoppingCart.find((prods) => prods.id === productId);
-    {
-      shoppingCart.map((productt) => {
-        if (productt(shoppingCart)) {
-        } else {
-          setquantity(quantity - 1);
-        }
-      });
+    for (var i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId === productId) {
+        shoppingCart[i].quantity++;
+        setShoppingCart([...shoppingCart]);
+        var tempPrice =
+          products.find((item) => item.id === productId).price + subtotal;
+        setSubtotal(tempPrice);
+        //     console.log(shoppingCart);
+
+        return;
+      }
     }
-  }
+    newItem = {
+      itemId: productId,
+      quantity: 1,
+    };
+    setShoppingCart([newItem, ...shoppingCart]);
+    // var tempPrice =
+    //   products.find((item) => item.id === productId).price + subtotal;
+    var tempPrice = products.find((item) => item.id === productId)
+      ? products.find((item) => item.id === productId).price + subtotal
+      : null;
+    // console.log(shoppingCart);
+    setSubtotal(tempPrice);
+  };
+
+  const handleRemoveItemToCart = (productId) => {
+    var newItem;
+    var newCart = [];
+
+    for (var i = 0; i < shoppingCart.length; i++) {
+      if (shoppingCart[i].itemId === productId) {
+        if (shoppingCart[i].quantity != 1) {
+          shoppingCart[i].quantity--;
+          setShoppingCart([...shoppingCart]);
+          var tempPrice =
+            subtotal - products.find((item) => item.id === productId).price;
+          setSubtotal(tempPrice);
+          return;
+        } else {
+          shoppingCart.splice(i, 1);
+          setShoppingCart([...shoppingCart]);
+          var tempPrice =
+            subtotal - products.find((item) => item.id === productId).price;
+          setSubtotal(tempPrice);
+          return;
+        }
+      }
+    }
+  };
 
   function handleOnCheckoutFormChange(names, email) {
     let profileinfo = {
@@ -80,13 +113,10 @@ export default function App() {
     setcheckoutForm(profileinfo);
   }
   async function handleOnSubmitCheckoutForm(checkoutForm, shoppingCart) {
-    const response = axios.post(
-      "https://codepath-store-api.herokuapp.com/store",
-      {
-        profile: checkoutForm,
-        shoppingCart: shoppingCart,
-      }
-    );
+    const response = axios.post("http://localhost:3001/store", {
+      profile: checkoutForm,
+      shoppingCart: shoppingCart,
+    });
   }
 
   return (
@@ -102,6 +132,18 @@ export default function App() {
                   shoppingCart={shoppingCart}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemToCart={handleRemoveItemToCart}
+                  cartamount={shoppingCart.length}
+                  setSubtotal={setSubtotal}
+                  subtotal={subtotal}
+                  setShoppingCart={setShoppingCart}
+                  handleOnToggle={handleOnToggle}
+                  handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                  handleOnSubmitCheckoutForm={handleOnCheckoutFormChange}
+                  // handleRemoveItemFromCart={handleRemoveItemFromCart}
+
+                  isOpen={isOpen}
+                  checkoutForm={checkoutForm}
+                  cartSize={shoppingCart.length}
                 />
               }
             />
@@ -109,25 +151,39 @@ export default function App() {
               path="/products/:productId"
               element={
                 <ProductDetail
-                  shoppingCart={shoppingCart}
                   handleAddItemToCart={handleAddItemToCart}
                   handleRemoveItemToCart={handleRemoveItemToCart}
+                  shoppingCart={shoppingCart}
+                  isOpen={isOpen}
+                  products={products}
+                  handleOnCheckoutFormChange={handleOnCheckoutFormChange}
+                  handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
+                  handleOnToggle={handleOnToggle}
+                  checkoutForm={checkoutForm}
+                  subtotal={subtotal}
+                  cartSize={shoppingCart.length}
                 />
               }
             />
             <Route path="*" element={<NotFound />} />
           </Routes>
-
           <Sidebar
             isOpen={isOpen}
             shoppingCart={shoppingCart}
-            quantity={quantity}
+            // quantity={quantity}
             products={products}
             checkoutForm={checkoutForm}
             handleOnCheckoutFormChange={handleOnCheckoutFormChange}
             handleOnSubmitCheckoutForm={handleOnSubmitCheckoutForm}
             handleOnToggle={handleOnToggle}
+            handleAddItemToCart={handleAddItemToCart}
+            handleRemoveItemToCart={handleRemoveItemToCart}
+            cartamount={shoppingCart.length}
+            setSubtotal={setSubtotal}
+            subtotal={subtotal}
+            // price={price}
           />
+          <Navbar />
         </main>
       </BrowserRouter>
       {/* <Home /> */}

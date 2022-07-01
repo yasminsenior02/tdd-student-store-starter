@@ -5,27 +5,32 @@ import Sidebar from "../Sidebar/Sidebar";
 
 import "./ProductGrid.css";
 export default function ProductGrid({
-  products, //   handleAddItemToCart,
-  //   handleRemoveItemToCart,
-  //   shoppingCart
+  products,
+  handleAddItemToCart,
+  handleRemoveItemToCart,
+  shoppingCart,
 }) {
   return (
     <div className="product-grid">
-      {products
-        ? products.map((product, index) => {
-            return (
-              <ProductCard
-                key={index}
-                productId={product.id}
-                product={product}
-                // showDescription={false}
-                // handleAddItemToCart={handleAddItemToCart}
-                // handleRemoveItemToCart={handleRemoveItemToCart}
-                // shoppingCart={shoppingCart}
-              />
-            );
-          })
-        : null}
+      {products.map((product, index) => {
+        return (
+          <ProductCard
+            key={index}
+            productId={product.id}
+            product={product}
+            showDescription={false}
+            handleAddItemToCart={handleAddItemToCart}
+            handleRemoveItemToCart={handleRemoveItemToCart}
+            shoppingCart={shoppingCart}
+            // quantity={
+            //   shoppingCart.find((item) => item.itemId === product.id)
+            //     ? shoppingCart.find((item) => item.itemId === product.Id)
+            //         .quantity
+            //     : null
+            // }
+          />
+        );
+      })}
     </div>
   );
 }

@@ -12,16 +12,17 @@ export default function Sidebar({
   handleOnCheckoutFormChange,
   handleOnSubmitCheckoutForm,
   handleOnToggle,
+  cartamount,
+  subtotal,
 }) {
-  React.useEffect(() => {
-    console.log(isOpen);
-  }, [isOpen]);
+  React.useEffect(() => {}, [isOpen]);
 
   const display1 = isOpen ? (
     <ShoppingCart
-      isOpen={isOpen}
       shoppingCart={shoppingCart}
       products={products}
+      cartamount={cartamount}
+      subtotal={subtotal}
     />
   ) : (
     ""
@@ -57,12 +58,4 @@ export default function Sidebar({
       {display1} {display2}
     </section>
   );
-
-  // function openNav() {
-  //   document.getElementById("mySidenav").style.width = "300px";
-  // }
-
-  // function closeNav() {
-  //   document.getElementById("mySidenav").style.width = "0";
-  // }
 }
