@@ -1,0 +1,8 @@
+.CartTable {
+  display: flex;
+  flex-direction: column;
+  background: var(--pure-white);
+  border: solid 1px var(--border-color);
+  border-radius: 4px;
+  width: 100%;
+}

@@ -105,18 +105,18 @@ export default function App() {
     }
   };
 
-  function handleOnCheckoutFormChange(names, email) {
-    let profileinfo = {
-      name: names,
-      value: email,
-    };
-    setcheckoutForm(profileinfo);
+  function handleOnCheckoutFormChange(name, value) {
+    //   let profileinfo = {
+    //     name: names,
+    //     value: email,
   }
-  async function handleOnSubmitCheckoutForm(checkoutForm, shoppingCart) {
-    const response = axios.post("http://localhost:3001/store", {
-      profile: checkoutForm,
-      shoppingCart: shoppingCart,
-    });
+  //   setcheckoutForm(profileinfo);
+  // }
+  function handleOnSubmitCheckoutForm() {
+    //   const response = axios.post("http://localhost:3001/store", {
+    //     profile: checkoutForm,
+    //     shoppingCart: shoppingCart,
+    //   });
   }
 
   return (
