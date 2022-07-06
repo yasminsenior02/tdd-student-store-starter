@@ -5,8 +5,9 @@
 
 Selling merchandise in the modern era requires digital solutions. For this project, you'll be tasked with designing and constructing an online student store for the College of Codepath. The application entails a frontend user interface for potential customers to peruse the goods, and a backend API to handle data management. The API will be built with Node and Express and the UI will be built with React.
 
+![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/75453235/177437683-5e72668c-0412-47ce-b804-77180e792b4d.gif)
 
-![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/75453235/176976302-4c328862-02e4-4209-958a-eb6f17f7fc10.gif)
+
 
 
 
@@ -296,8 +297,7 @@ Some yes. It was very hard tracing the steps though, there was no complete layou
 
 - If you had more time, what would you have done differently? Would you have added additional features? Changed the way your project responded to a particular event, etc.
 
-I would've got my sidebar to fully function. It only displays that they no items in the shopping cart. Also I would've got my quanity to show with the handle add and remove. I don't think i rendered my quanity properly so it didn't display.
-
+I would've got my receipts to post. I have it posted to backend but it doesn't show to the frontend.
 - Reflect on your project demo, what went well? Were there things that maybe didn't go as planned? Did you notice something that your peer did that you would like to try next time?
 
 The sidebar didn't go as planned, I wasn't fully able to finish my checkout form so my sidebar didn't go as displayed.
